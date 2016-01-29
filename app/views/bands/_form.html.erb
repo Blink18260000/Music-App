@@ -1,0 +1,26 @@
+<% action = (band.persisted? ? band_url : bands_url) %>
+<% method = (band.persisted? ? :patch : :post) %>
+
+<%= render "shared/errors" %>
+
+<form class="album" action="<%= action %>" method="post">
+  <input type="hidden" name="_method" value="<%= method %>">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <input type="text" name="band[band_name]" value="<%= @band.band_name %>"></br></br>
+  <input type="submit">
+</form>
+
+<% if band.persisted? %>
+  <form action="<%= band_url %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
+    <input type="submit" value="Delete Band">
+  </form>
+<% end %>

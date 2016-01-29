@@ -1,0 +1,5 @@
+<h1><%= @track.title %></h1>
+<h2>From <%= link_to @track.album.title, album_url(@track.album) %></h2>
+<form action="<%= edit_track_url %>" method="get">
+  <input type="submit" value="Edit Track">
+</form>

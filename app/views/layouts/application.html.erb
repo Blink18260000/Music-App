@@ -6,6 +6,26 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<header>
+<% if current_user %>
+  <%= current_user.user_name %>
+  <form class="" action="<%= session_url %>" method="post">
+    <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Log Out">
+  </form>
+<% end %>
+<% unless bands_url == request.original_url %>
+  <div align="center">
+    <form class="" action="<%= bands_url %>" method="get">
+      <input type="submit" value="Bands List">
+    </form>
+  </div>
+<% end %>
+</header>
 <body>
 
 <%= yield %>

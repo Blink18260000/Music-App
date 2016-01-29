@@ -1,0 +1,13 @@
+<h1>Bands</h1>
+<br/>
+<% Band.all.each do |band|%>
+  <%= link_to band.band_name, band_url(band) %><br/>
+  <% band.albums.each do |album| %>
+    <%= "--" + album.title %><br/>
+  <% end %><br/>
+<% end %>
+
+</br>
+<form action="<%= new_band_url %>" method="get">
+  <input type="submit" value="New Band">
+</form>

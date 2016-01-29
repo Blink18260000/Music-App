@@ -1,0 +1,16 @@
+<h1>New Track</h1>
+
+<%= render "shared/errors" %>
+
+<form action="<%= album_tracks_url %>" method="post">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+  <input type="hidden" name="track[album_id]" value="<%= @track.album_id %>">
+
+  <input type="text" name="track[title]" value="<%= @track.title %>"></br>
+  <input type="checkbox" name="track[bonus]" value=true <%= @track.bonus ? "checked" : "" %>>Bonus Track
+  </br>
+  <input type="submit">
+</form>
